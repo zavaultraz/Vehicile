@@ -13,7 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        //
+        
+    Schema::create('vehicles', function (Blueprint $table) {
+        $table->id();
+        $table->string('name');
+        $table->string('color')->default('black');
+        $table->string('tire_wheel')->default(2);
+        $table->string('machine')->nullable();
+        $table->string('price', 8, 2)->nullable();
+        $table->timestamps();
+    });
     }
 
     /**
@@ -23,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('vehicles');
     }
 };
